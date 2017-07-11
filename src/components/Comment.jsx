@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import ReplyBox from './ReplyBox.jsx';
 import Voting from './Voting.jsx';
+import Time from './Time.jsx';
 
 export default class Comment extends Component {
     render() {
@@ -15,7 +16,9 @@ export default class Comment extends Component {
                       <a href="#">{name}
                       </a>
                     </span>
-                    <time className="comment-timestamp">{(date.getDate())}</time>
+                    <div className="comment-timestamp">
+                    <Time date={date} />
+                    </div>
                   </div>
                   <div className="comment-body">
                     {comment}
@@ -25,7 +28,6 @@ export default class Comment extends Component {
                     <button className="btn btn-xs btn-reply">reply</button>
                   </div>
                 </div>
-                <ReplyBox />
             </div>
         );
     }

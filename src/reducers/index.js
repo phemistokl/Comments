@@ -1,9 +1,11 @@
+import { combineReducers } from 'redux';
+
 const InitialState = [
 	{
 		id: 0,
 		name: "User1",
 		comment: "Even in these scenarios though, you can usually skirt away and clear the board.",
-		date: new Date('2017-03-07T12:00:00Z'),
+		date: new Date('2016-03-07T12:00:00Z'),
 		like: 0,
 		reply: [
 			{
@@ -63,16 +65,22 @@ const InitialState = [
 	},
 ];
 
-export default function comments(state = InitialState, action) {
+function comments(state = InitialState, action) {
 	switch (action.type) {
+		case 'GET_COMMENTS': {
+			return [
+				...state
+			];
+		}
+
 		case 'ADD_COMMENT': {
 			return [
 				...state, {
 					id: action.id,
 					name: action.name,
 					comment: action.comment,
-					date: Date.now(),
-					like: 0
+					date: action.date,
+					like: action.like
 				}
 			];
 		}
@@ -82,3 +90,17 @@ export default function comments(state = InitialState, action) {
 		}
 	}
 };
+
+function sort(state = "NEWEST", action) {
+	switch (action.type) {
+		case 'SET_SORT': {
+			return action.sort;
+		}
+
+		default: {
+			return state;
+		}
+	}
+};
+
+export default combineReducers({ comments, sort });
