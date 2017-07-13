@@ -31,10 +31,11 @@ export default class Input extends Component {
         return (
             <div className="comment-entry">
                 <div className="comment-entry-header">
-                   MyNick
+                   <img alt="MyNick" src="http://i.playground.ru/i/00/00/00/00/user/default/icon.50x50.png"
+               className="avatar-image size32" />MyNick
                 </div>
                 <div className="form-group">
-                <input
+                <textarea
                     className="form-control"
                     type="text"
                     placeholder="Put your shit here..."

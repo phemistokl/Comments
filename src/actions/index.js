@@ -1,9 +1,3 @@
-export const getComments = () => {
-	return {
-		type: "GET_COMMENTS"
-	};
-};
-
 export const addComment = comment => {
 	return {
 		type: "ADD_COMMENT",

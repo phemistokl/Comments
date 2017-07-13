@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 export default class Voting extends Component {
     render() {
+        
         const { like } = this.props;
 
         return (
