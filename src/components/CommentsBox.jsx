@@ -21,7 +21,7 @@ export default class CommentsBox extends Component {
         };
 
         const total = totalComments(this.props.comments);
-        console.log(this.props.comments);
+        
         return (
             <div className="comments-flow">
                         <CommentHeader total={total} />
@@ -46,26 +46,29 @@ export default class CommentsBox extends Component {
 
 
 function getSortedComments(comments, sort) {
+    const newarr = [];
     switch (sort) {
         case 'NEWEST':
-            return comments.sort((a, b) => {
+            comments.sort((a, b) => {
                 return a.date.getTime() < b.date.getTime() ? 1 : -1;
             });
+            return newarr.concat(comments);
 
         case 'OLDEST': 
-            return comments.sort((a, b) => {
+            comments.sort((a, b) => {
                 return a.date.getTime() > b.date.getTime() ? 1 : -1;
             });
+            return newarr.concat(comments);
 
         case 'BEST':
-            return comments.sort((a, b) => {
+            comments.sort((a, b) => {
                 return a.like < b.like ? 1 : -1;
             });
+            return newarr.concat(comments);
     }
 }
 
 function mapStateToProps(state) {
-    console.log(state);
 	return {
 		comments: getSortedComments(state.comments, state.sort)
 	};
